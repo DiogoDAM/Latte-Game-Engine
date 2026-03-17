@@ -14,6 +14,11 @@ public sealed class SpriteComponent : DrawableComponent
 		Region = region;
 	}
 
+	public SpriteComponent(Texture2D texture)
+	{
+		Region = new TextureRegion(texture);
+	}
+
 	public SpriteComponent(Texture2D texture, int width, int height)
 	{
 		Region = new TextureRegion(texture, width, height);
@@ -27,6 +32,12 @@ public sealed class SpriteComponent : DrawableComponent
 	public SpriteComponent(Texture2D texture, Rectangle srcRect)
 	{
 		Region = new TextureRegion(texture, srcRect);
+	}
+
+
+	public SpriteComponent(string texturePath)
+	{
+		Region = new TextureRegion(texturePath);
 	}
 
 	public SpriteComponent(string texturePath, int width, int height)
