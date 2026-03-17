@@ -6,6 +6,7 @@ public abstract class Component : Behaviour
 {
 	public Component() : base()
 	{
+		Visible = false;
 	}
 
 	public virtual void Added()
