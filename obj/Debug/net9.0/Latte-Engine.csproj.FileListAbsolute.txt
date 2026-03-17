@@ -1,0 +1,13 @@
+/home/diogodam/Gamedev/Latte-Engine/bin/Debug/net9.0/Latte-Engine.deps.json
+/home/diogodam/Gamedev/Latte-Engine/bin/Debug/net9.0/Latte-Engine.dll
+/home/diogodam/Gamedev/Latte-Engine/bin/Debug/net9.0/Latte-Engine.pdb
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.csproj.AssemblyReference.cache
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.GeneratedMSBuildEditorConfig.editorconfig
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.AssemblyInfoInputs.cache
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.AssemblyInfo.cs
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.csproj.CoreCompileInputs.cache
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.sourcelink.json
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.dll
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/refint/Latte-Engine.dll
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/Latte-Engine.pdb
+/home/diogodam/Gamedev/Latte-Engine/obj/Debug/net9.0/ref/Latte-Engine.dll
