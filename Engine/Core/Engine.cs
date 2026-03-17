@@ -26,6 +26,9 @@ public abstract class Engine : Game
 
 	public static bool DebugMode { get; protected set; }  = false;
 
+	public static Scene ActiveScene { get; protected set; }
+	private static Scene _nextScene;
+
 	public Engine(string windowTitle, int windowWidth, int windowHeight, bool isFullScreen) : base()
 	{
 		_instance = this;
@@ -49,11 +52,21 @@ public abstract class Engine : Game
 		SpriteBatch = new(GraphicsDevice);
 
         base.Initialize();
+
+		if(_nextScene == null)
+			throw new NullReferenceException("Starter Scene not selected");
+
     }
 
     protected override void Update(GameTime gameTime)
     {
+		if(_nextScene != null)
+			TransitionToScene();
+
 		float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+		if(ActiveScene.CanUpdate)
+			ActiveScene.Update(dt);
 
         base.Update(gameTime);
     }
@@ -61,6 +74,12 @@ public abstract class Engine : Game
     protected override void Draw(GameTime gameTime)
     {
 		GraphicsDevice.Clear(ClearColor);
+
+		if(ActiveScene.CanDraw)
+		{
+			ActiveScene.Draw();
+			ActiveScene.DrawUi();
+		}
 
         base.Draw(gameTime);
     }
@@ -93,5 +112,24 @@ public abstract class Engine : Game
 	{
 		Graphics.ToggleFullScreen();
 		Graphics.ApplyChanges();
+	}
+
+	public static void ChangeScene(Scene scene)
+	{
+		_nextScene = scene;
+	}
+
+	private void TransitionToScene()
+	{
+		ActiveScene?.Disable();
+		ActiveScene?.Dispose();
+		ActiveScene = null;
+
+		ActiveScene = _nextScene;
+		ActiveScene.Activate();
+		ActiveScene.Awake();
+		ActiveScene.Start();
+
+		_nextScene = null;
 	}
 }

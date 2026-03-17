@@ -15,4 +15,8 @@ public class Scene : Behaviour
 	public virtual void Disable()
 	{
 	}
+
+	public virtual void DrawUi()
+	{
+	}
 }
