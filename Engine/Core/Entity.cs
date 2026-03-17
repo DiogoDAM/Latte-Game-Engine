@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using Microsoft.Xna.Framework;
+
 namespace Latte;
 
 public class Entity : Behaviour
@@ -8,10 +10,22 @@ public class Entity : Behaviour
 	private Dictionary<Type, Component> _components;
 	private Dictionary<Type, DrawableComponent> _drawables;
 
-	public Entity() : base()
+	public TransformComponent Transform;
+
+	public Entity()
 	{
 		_components = new();
 		_drawables = new();
+
+		Transform = AddComponent<TransformComponent>(new ());
+	}
+
+	public Entity(float x, float y)
+	{
+		_components = new();
+		_drawables = new();
+
+		Transform = AddComponent<TransformComponent>(new (new Vector2(x, y)));
 	}
 
 	// Components methods handlers
@@ -28,7 +42,7 @@ public class Entity : Behaviour
 				_drawables.Add(type, dc);
 			}
 
-			c.Added();
+			c.Attach(this);
 			c.Awake();
 			c.Start();
 
@@ -52,7 +66,7 @@ public class Entity : Behaviour
 				_drawables.Remove(type);
 			}
 
-			c.Removed();
+			c.Distach();
 			if(c.ToDispose)
 				c.Dispose();
 		}
@@ -77,9 +91,9 @@ public class Entity : Behaviour
 		return (outC == null) ? false : true;
 	}
 
-	public T GetSceneAs<T>() where T : Scene => (T)Engine.ActiveScene;
 
-
+	// Logic Methods
+	//
 	public virtual void Added()
 	{
 	}
@@ -114,6 +128,11 @@ public class Entity : Behaviour
 				c.DebugDraw();
 		}
     }
+
+	//Utils methods 
+	//
+	public T GetSceneAs<T>() where T : Scene => (T)Engine.ActiveScene;
+
 
 	protected override void Dispose(bool disposable)
 	{

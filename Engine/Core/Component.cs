@@ -4,16 +4,19 @@ namespace Latte;
 
 public abstract class Component : Behaviour
 {
-	public Component() : base()
-	{
-		Visible = false;
-	}
+	public Entity Entity { get; private set; }
 
-	public virtual void Added()
+	public Component()
 	{
 	}
 
-	public virtual void Removed()
+	public virtual void Attach(Entity e)
 	{
+		Entity = e;
+	}
+
+	public virtual void Distach()
+	{
+		Entity = null;
 	}
 }
