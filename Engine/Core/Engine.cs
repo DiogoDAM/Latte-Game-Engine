@@ -77,8 +77,13 @@ public abstract class Engine : Game
 
 		if(ActiveScene.CanDraw)
 		{
-			ActiveScene.Draw();
-			ActiveScene.DrawUi();
+			ActiveScene.BeginDraw();
+				ActiveScene.Draw();
+			ActiveScene.EndDraw();
+
+			ActiveScene.BeginDrawUi();
+				ActiveScene.DrawUi();
+			ActiveScene.EndDrawUi();
 		}
 
         base.Draw(gameTime);
