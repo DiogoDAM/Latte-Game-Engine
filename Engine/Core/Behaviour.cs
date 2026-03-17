@@ -10,6 +10,7 @@ public abstract class Behaviour : IDisposable
 	public bool Debug = Engine.DebugMode;
 
 	public bool Disposed { get; protected set; }
+	public bool ToDispose { get; protected set; }
 
 	public bool CanUpdate => Active && Alive && !Disposed;
 	public bool CanDraw => Visible && Alive && !Disposed;
