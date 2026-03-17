@@ -34,7 +34,6 @@ public sealed class SpriteComponent : DrawableComponent
 		Region = new TextureRegion(texture, srcRect);
 	}
 
-
 	public SpriteComponent(string texturePath)
 	{
 		Region = new TextureRegion(texturePath);
