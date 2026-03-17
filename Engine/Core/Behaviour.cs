@@ -40,6 +40,28 @@ public abstract class Behaviour : IDisposable
 	{
 	}
 
+	public void Kill()
+	{
+		Active = false;
+		Visible = false;
+		Alive = false;
+		Debug = false;
+	}
+
+	public void Revive()
+	{
+		Active = true;
+		Visible = true;
+		Alive = true;
+		Debug = Engine.DebugMode;
+	}
+
+	public virtual void Destroy()
+	{
+		Kill();
+		ToDispose = true;
+	}
+
 	public void Dispose()
 	{
 		Dispose(true);
