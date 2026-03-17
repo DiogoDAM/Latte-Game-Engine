@@ -24,6 +24,8 @@ public abstract class Engine : Game
 	
 	public static Color ClearColor = Color.CornflowerBlue;
 
+	public static bool DebugMode { get; protected set; }  = false;
+
 	public Engine(string windowTitle, int windowWidth, int windowHeight, bool isFullScreen) : base()
 	{
 		_instance = this;
