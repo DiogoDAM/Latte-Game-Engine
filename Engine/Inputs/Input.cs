@@ -42,6 +42,14 @@ public sealed class Input
 		_singleActions[name].Add(new KeyboardAction(key, predicate));
 	}
 
+	public void AddMouseButtonInputAction(string name, Predicate<byte> predicate, byte button)
+	{
+		if(!_singleActions.ContainsKey(name))
+			throw new KeyNotFoundException($"The action name: {name} not found");
+
+		_singleActions[name].Add(new MouseButtonAction(button, predicate));
+	}
+
 	public void ClearInputAction(string name)
 	{
 		if(!_singleActions.ContainsKey(name))
