@@ -26,6 +26,8 @@ public abstract class Engine : Game
 
 	public static bool DebugMode { get; protected set; }  = false;
 
+	public static Input Input { get; private set; }
+
 	public static Scene ActiveScene { get; protected set; }
 	private static Scene _nextScene;
 
@@ -42,6 +44,8 @@ public abstract class Engine : Game
 		SetVirtualWindowSize(windowWidth, windowHeight);
 		SetWindowTitle(windowTitle);
 		SetFullScreenMode(isFullScreen);
+
+		Input = new();
 
 		IsMouseVisible = true;
 	}
@@ -64,6 +68,8 @@ public abstract class Engine : Game
 			TransitionToScene();
 
 		float dt = (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+		Input.Update(dt);
 
 		if(ActiveScene.CanUpdate)
 			ActiveScene.Update(dt);

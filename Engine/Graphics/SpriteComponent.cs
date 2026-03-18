@@ -7,7 +7,7 @@ public sealed class SpriteComponent : DrawableComponent
 {
 	public TextureRegion Region;
 
-	public Vector2 Offset;
+	public Vector2 Offset = Vector2.Zero;
 
 	public SpriteComponent(TextureRegion region)
 	{
@@ -16,42 +16,42 @@ public sealed class SpriteComponent : DrawableComponent
 
 	public SpriteComponent(Texture2D texture)
 	{
-		Region = new(texture);
+		Region = new TextureRegion(texture);
 	}
 
 	public SpriteComponent(Texture2D texture, int width, int height)
 	{
-		Region = new(texture, width, height);
+		Region = new TextureRegion(texture, width, height);
 	}
 
 	public SpriteComponent(Texture2D texture, int x, int y, int width, int height)
 	{
-		Region = new(texture, x, y, width, height);
+		Region = new TextureRegion(texture, x, y, width, height);
 	}
 
-	public SpriteComponent(Texture2D texture, Rectangle srcRectangle)
+	public SpriteComponent(Texture2D texture, Rectangle srcRect)
 	{
-		Region = new(texture, srcRectangle);
+		Region = new TextureRegion(texture, srcRect);
 	}
 
 	public SpriteComponent(string texturePath)
 	{
-		Region = new(texturePath);
+		Region = new TextureRegion(texturePath);
 	}
 
 	public SpriteComponent(string texturePath, int width, int height)
 	{
-		Region = new(texturePath, width, height);
+		Region = new TextureRegion(texturePath, width, height);
 	}
 
 	public SpriteComponent(string texturePath, int x, int y, int width, int height)
 	{
-		Region = new(texturePath, x, y, width, height);
+		Region = new TextureRegion(texturePath, x, y, width, height);
 	}
 
-	public SpriteComponent(string texturePath, Rectangle srcRectangle)
+	public SpriteComponent(string texturePath, Rectangle srcRect)
 	{
-		Region = new(texturePath, srcRectangle);
+		Region = new TextureRegion(texturePath, srcRect);
 	}
 
     public override void Draw()
@@ -60,9 +60,9 @@ public sealed class SpriteComponent : DrawableComponent
 				Entity.Transform.GlobalPosition + Offset,
 				Region.SourceRectangle,
 				Color,
-				Entity.Transform.GlobalRotation,
+				Entity.Transform.Rotation,
 				Origin,
-				Entity.Transform.GlobalScale,
+				Entity.Transform.Scale,
 				Flip,
 				Depth);
     }
