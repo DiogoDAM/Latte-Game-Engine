@@ -21,6 +21,8 @@ public abstract class Engine : Game
 
 	public static int VirtualWidth { get; private set; }
 	public static int VirtualHeight { get; private set; }
+
+	public static Matrix TransformMatrix { get; set; }
 	
 	public static Color ClearColor = Color.CornflowerBlue;
 

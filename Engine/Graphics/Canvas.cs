@@ -51,9 +51,9 @@ public sealed class Canvas
 	public void ResetAndDrawRenderTarget()
 	{
 		Engine.GraphicsDevice.SetRenderTarget(null);
-		Engine.GraphicsDevice.Clear(Engine.ClearColor);
+		Engine.GraphicsDevice.Clear(Color.Black);
 
-		Engine.SpriteBatch.Begin(samplerState: SamplerState);
+		Engine.SpriteBatch.Begin(samplerState: SamplerState );
 
 			Engine.SpriteBatch.Draw(Target, _destinationRectangle, Color.White);
 

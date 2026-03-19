@@ -28,7 +28,7 @@ public class Entity : Behaviour
 		Transform = AddComponent<TransformComponent>(new (new Vector2(x, y)));
 	}
 
-	// Components methods handlers
+	// Components handlers
 	
 	public T AddComponent<T>(T c) where T : Component
 	{

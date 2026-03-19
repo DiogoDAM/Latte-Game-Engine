@@ -37,4 +37,9 @@ public sealed class TransformComponent : Component
 		Rotation = rot;
 		Scale = scale;
 	}
+
+	public override string ToString()
+	{
+		return $"Transform: (GlobalPosition: {GlobalPosition}, GlobalRotatin: {GlobalRotation}, GlobalScale: {GlobalScale})";
+	}
 }
