@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Latte-Engine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a4e3f2ed880cb5ef81f932f70e04c0c341fdd2af")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4bf2aaabf59b04bd0a95af30be24a0cfeb3dfdb1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Latte-Engine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Latte-Engine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
