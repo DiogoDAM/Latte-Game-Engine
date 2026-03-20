@@ -42,6 +42,10 @@ public sealed class ColliderComponent : Component
 				return Shape.Intersects(col.Shape);
 			}
 		}
+		else
+		{
+		    throw new ComponentNotFoundException("The Entity does not have ColliderComponent");
+		}
 
 		return false;
 	}
