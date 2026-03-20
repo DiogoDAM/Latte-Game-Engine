@@ -12,12 +12,18 @@ public class Entity : Behaviour
 
 	public TransformComponent Transform;
 
+	public string Tag;
+
+	public readonly Guid Id;
+
 	public Entity()
 	{
 		_components = new();
 		_drawables = new();
 
 		Transform = AddComponent<TransformComponent>(new ());
+
+		Id = Guid.NewGuid();
 	}
 
 	public Entity(float x, float y)
@@ -26,6 +32,8 @@ public class Entity : Behaviour
 		_drawables = new();
 
 		Transform = AddComponent<TransformComponent>(new (new Vector2(x, y)));
+
+		Id = Guid.NewGuid();
 	}
 
 	//Methods for handling components
@@ -131,6 +139,18 @@ public class Entity : Behaviour
 	//Utils methods 
 	public T GetSceneAs<T>() where T : Scene => (T)Engine.ActiveScene;
 
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(this, obj))
+            return true;
+        
+        if (obj is null || GetType() != obj.GetType())
+            return false;
+        
+		Entity other = (Entity)obj;
+        
+		return Id == other.Id;
+    }
 
 	protected override void Dispose(bool disposable)
 	{
@@ -139,4 +159,14 @@ public class Entity : Behaviour
 			Disposed = true;
 		}
 	}
+
+    public override int GetHashCode()
+    {
+        return base.GetHashCode();
+    }
+
+    public override string ToString()
+    {
+        return base.ToString();
+    }
 }
