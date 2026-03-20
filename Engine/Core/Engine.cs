@@ -26,14 +26,17 @@ public abstract class Engine : Game
 	
 	public static Color ClearColor = Color.CornflowerBlue;
 
-	public static bool DebugMode { get; protected set; }  = false;
+	public static bool DebugMode { get; protected set; }
 
 	public static Input Input { get; private set; }
 
 	public static Scene ActiveScene { get; protected set; }
 	private static Scene _nextScene;
 
-	public Engine(string windowTitle, int windowWidth, int windowHeight, bool isFullScreen) : base()
+	public delegate void VirtualWindowResizeEventHandler();
+	public static event VirtualWindowResizeEventHandler VirtualWindowResized;
+
+	public Engine(string windowTitle, int windowWidth, int windowHeight, bool isFullScreen=false, bool debugMode=false) : base()
 	{
 		_instance = this;
 
@@ -46,6 +49,8 @@ public abstract class Engine : Game
 		SetVirtualWindowSize(windowWidth, windowHeight);
 		SetWindowTitle(windowTitle);
 		SetFullScreenMode(isFullScreen);
+
+		DebugMode = debugMode;
 
 		Input = new();
 
@@ -115,6 +120,7 @@ public abstract class Engine : Game
 	{
 		VirtualWidth = width;
 		VirtualHeight = height;
+		VirtualWindowResized?.Invoke();
 	}
 
 	public static void SetFullScreenMode(bool value)
