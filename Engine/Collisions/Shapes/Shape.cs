@@ -8,6 +8,8 @@ public abstract class Shape
 	public int X;
 	public int Y;
 
+	public virtual Rectangle AABB { get; }
+
 	public bool Intersects(Shape other)
 	{
 		switch(other)

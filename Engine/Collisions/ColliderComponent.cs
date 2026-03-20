@@ -1,6 +1,7 @@
 using System;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace Latte;
 
@@ -11,6 +12,10 @@ public sealed class ColliderComponent : Component
 	public Vector2 Offset;
 
 	public bool CanCollide = true;
+
+	public delegate void CollidedHandler(ColliderComponent other);
+
+	public event CollidedHandler Collided;
 
 	public ColliderComponent(Shape shape)
 	{
@@ -50,6 +55,11 @@ public sealed class ColliderComponent : Component
 		return false;
 	}
 
+	public void Collide(ColliderComponent other)
+	{
+		Collided?.Invoke(other);
+	}
+
 	public bool Contains(Vector2 point)
 	{
 		if(CanCollide)
@@ -57,4 +67,14 @@ public sealed class ColliderComponent : Component
 
 		return false;
 	}
+
+    public override void DebugDraw()
+    {
+		Texture2D texture;
+		if(Shape is BoxShape box)
+		{
+			texture = ShapeDrawer.LineRectangle(box.Width, box.Height, Color.Red);
+			Engine.SpriteBatch.Draw(texture, new Vector2(Shape.X, Shape.Y), null, Color.Red);
+		}
+    }
 }

@@ -87,7 +87,9 @@ public abstract class Engine : Game
 		{
 			ActiveScene.BeginDraw();
 				ActiveScene.Draw();
+				ActiveScene.DebugDraw();
 			ActiveScene.EndDraw();
+
 
 			ActiveScene.BeginDrawUi();
 				ActiveScene.DrawUi();

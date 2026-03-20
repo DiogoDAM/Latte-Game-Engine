@@ -16,6 +16,8 @@ public sealed class BoxShape : Shape
 	public int HalfWidth => (int)(Width*0.5f);
 	public int HalfHeight => (int)(Height*0.5f);
 
+	public override Rectangle AABB { get { return new Rectangle(X, Y, Width, Height); } }
+
 	public BoxShape(int width, int height)
 	{
 		Width = width;
