@@ -32,6 +32,17 @@ public sealed class BoxShape : Shape
 			Bottom >= other.Top;
 	}
 
+    public override bool Intersects(CircleShape other)
+    {
+		float closestX = Math.Clamp(other.Center.X, Left, Right);
+		float closestY = Math.Clamp(other.Center.Y, Top, Bottom);
+
+		float dx = other.Center.X - closestX;
+		float dy = other.Center.Y - closestY;
+
+		return (dx * dx + dy * dy) <= other.Radius * other.Radius;
+    }
+
 	public override bool Contains(Vector2 vec)
 	{
 		return vec.X < Right &&

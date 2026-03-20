@@ -26,7 +26,7 @@ public abstract class Engine : Game
 	
 	public static Color ClearColor = Color.CornflowerBlue;
 
-	public static bool DebugMode { get; protected set; }
+	public static bool DebugMode { get; private set; }
 
 	public static Input Input { get; private set; }
 
@@ -56,6 +56,10 @@ public abstract class Engine : Game
 
 		IsMouseVisible = true;
 	}
+
+	public static void DebugModeOn() => DebugMode = true;
+	public static void DebugModeFalse() => DebugMode = false;
+	public static void ToggleDebugMode() => DebugMode = !DebugMode;
 
     protected override void Initialize()
     {

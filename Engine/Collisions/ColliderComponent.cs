@@ -17,6 +17,8 @@ public sealed class ColliderComponent : Component
 
 	public event CollidedEventHandler Collided;
 
+	public Color DebugColor = Color.Red;
+
 	public ColliderComponent(Shape shape)
 	{
 		Shape = shape;
@@ -73,8 +75,8 @@ public sealed class ColliderComponent : Component
 		Texture2D texture;
 		if(Shape is BoxShape box)
 		{
-			texture = ShapeDrawer.LineRectangle(box.Width, box.Height, Color.Red);
-			Engine.SpriteBatch.Draw(texture, new Vector2(Shape.X, Shape.Y), null, Color.Red);
+			texture = ShapeDrawer.LineRectangle(box.Width, box.Height, Color.White);
+			Engine.SpriteBatch.Draw(texture, new Vector2(Shape.X, Shape.Y), null, DebugColor);
 		}
     }
 }
