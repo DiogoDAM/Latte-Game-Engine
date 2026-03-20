@@ -28,7 +28,7 @@ public class Entity : Behaviour
 		Transform = AddComponent<TransformComponent>(new (new Vector2(x, y)));
 	}
 
-	// Components handlers
+	//Methods for handling components
 	
 	public T AddComponent<T>(T c) where T : Component
 	{
@@ -93,7 +93,6 @@ public class Entity : Behaviour
 
 
 	// Logic Methods
-	//
 	public virtual void Added()
 	{
 	}
@@ -130,7 +129,6 @@ public class Entity : Behaviour
     }
 
 	//Utils methods 
-	//
 	public T GetSceneAs<T>() where T : Scene => (T)Engine.ActiveScene;
 
 
