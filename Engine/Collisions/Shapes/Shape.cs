@@ -1,4 +1,5 @@
 using System;
+using Microsoft.Xna.Framework;
 
 namespace Latte;
 
@@ -17,4 +18,6 @@ public abstract class Shape
 	}
 
 	public abstract bool Intersects(BoxShape other);
+
+	public abstract bool Contains(Vector2 vec);
 }
