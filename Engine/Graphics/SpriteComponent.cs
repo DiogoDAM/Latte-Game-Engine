@@ -60,9 +60,9 @@ public sealed class SpriteComponent : DrawableComponent
 				Entity.Transform.GlobalPosition + Offset,
 				Region.SourceRectangle,
 				Color,
-				Entity.Transform.Rotation,
+				Entity.Transform.GlobalRotation,
 				Origin,
-				Entity.Transform.Scale,
+				Entity.Transform.GlobalScale,
 				Flip,
 				Depth);
     }
