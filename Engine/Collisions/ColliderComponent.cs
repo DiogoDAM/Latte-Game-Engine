@@ -13,9 +13,9 @@ public sealed class ColliderComponent : Component
 
 	public bool CanCollide = true;
 
-	public delegate void CollidedHandler(ColliderComponent other);
+	public delegate void CollidedEventHandler(ColliderComponent other);
 
-	public event CollidedHandler Collided;
+	public event CollidedEventHandler Collided;
 
 	public ColliderComponent(Shape shape)
 	{
