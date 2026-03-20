@@ -9,6 +9,9 @@ public sealed class SpriteComponent : DrawableComponent
 
 	public Vector2 Offset = Vector2.Zero;
 
+	public override int Width { get { return Region.Width; } } 
+	public override int Height { get { return Region.Height; } }
+
 	public SpriteComponent(TextureRegion region)
 	{
 		Region = region;

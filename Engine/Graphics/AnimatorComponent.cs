@@ -25,16 +25,25 @@ public sealed class AnimatorComponent : DrawableComponent
 
 	public event CurrentAnimationEndedHandler CurrentAnimationEnded;
 
+	private int _framesWidth;
+	public override int Width { get { return _framesWidth; } }
+	private int _framesHeight;
+	public override int Height { get { return _framesHeight; } }
+
 	public AnimatorComponent(Texture2D texture, int framesWidth, int framesHeight)
 	{
 		_animations = new();
-		Frames = new(texture, framesWidth, framesHeight);
+		_framesWidth = framesWidth;
+		_framesHeight = framesHeight;
+		Frames = new(texture, _framesWidth, _framesHeight);
 	}
 
 	public AnimatorComponent(string texturePath, int framesWidth, int framesHeight)
 	{
 		_animations = new();
-		Frames = new(texturePath, framesWidth, framesHeight);
+		_framesWidth = framesWidth;
+		_framesHeight = framesHeight;
+		Frames = new(texturePath, _framesWidth, _framesHeight);
 	}
 
 	public void AddAnimation(string name, float duration, bool looping, params int[] framesIndexes)

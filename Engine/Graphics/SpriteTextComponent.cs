@@ -12,6 +12,11 @@ public sealed class SpriteTextComponent : DrawableComponent
 
 	public TransformComponent Transform;
 
+	public override int Width { get { return (int)Font.MeasureString(Text).X; } } 
+	public override int Height { get { return (int)Font.MeasureString(Text).Y; } }
+
+	public Vector2 TextSize() => Font.MeasureString(Text);
+
 	public SpriteTextComponent(SpriteFont font, string text)
 	{
 		Transform = new();
@@ -25,10 +30,6 @@ public sealed class SpriteTextComponent : DrawableComponent
 		Font = Engine.Content.Load<SpriteFont>(fontPath);
 		Text = text;
 	}
-
-	public Vector2 TextSize() => Font.MeasureString(Text);
-	public float TextWidth() => Font.MeasureString(Text).X;
-	public float TextHeight() => Font.MeasureString(Text).Y;
 
     public override void Attach(Entity e)
     {
