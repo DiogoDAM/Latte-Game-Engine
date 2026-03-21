@@ -1,5 +1,3 @@
-using System;
-
 using Microsoft.Xna.Framework;
 
 namespace Latte;
@@ -50,5 +48,10 @@ public static class CollisionHelper
 		}
 
 		return pos;
+	}
+
+	public static int GetIntersectionCircle(CircleShape circle1, CircleShape circle2)
+	{
+		return (int)((circle1.Radius + circle2.Radius) - Vector2.Distance(circle1.Center, circle2.Center));
 	}
 }

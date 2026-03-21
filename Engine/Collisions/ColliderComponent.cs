@@ -78,5 +78,10 @@ public sealed class ColliderComponent : Component
 			texture = ShapeDrawer.LineRectangle(box.Width, box.Height, Color.White);
 			Engine.SpriteBatch.Draw(texture, new Vector2(Shape.X, Shape.Y), null, DebugColor);
 		}
+		else if(Shape is CircleShape circle)
+		{
+			texture = ShapeDrawer.LineCircle(circle.Radius, Color.White);
+			Engine.SpriteBatch.Draw(texture, new Vector2(Shape.X, Shape.Y), null, DebugColor);
+		}
     }
 }
