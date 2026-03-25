@@ -19,9 +19,6 @@ public abstract class Engine : Game
 	public static int WindowWidth => Graphics.PreferredBackBufferWidth;
 	public static int WindowHeight => Graphics.PreferredBackBufferHeight;
 
-	public static int VirtualWidth { get; private set; }
-	public static int VirtualHeight { get; private set; }
-
 	public static Matrix TransformMatrix { get; set; }
 	
 	public static Color ClearColor = Color.CornflowerBlue;
@@ -32,6 +29,11 @@ public abstract class Engine : Game
 
 	public static Scene ActiveScene { get; protected set; }
 	private static Scene _nextScene;
+
+	public static int VirtualWidth { get; private set; }
+	public static int VirtualHeight { get; private set; }
+
+	public static Vector2 VirtualScaleDistortion { get; protected set; }
 
 	public delegate void VirtualWindowResizeEventHandler();
 	public static event VirtualWindowResizeEventHandler VirtualWindowResized;
@@ -124,6 +126,7 @@ public abstract class Engine : Game
 	{
 		VirtualWidth = width;
 		VirtualHeight = height;
+		VirtualScaleDistortion = new Vector2((float)VirtualWidth / WindowWidth, (float)VirtualHeight / WindowHeight);
 		VirtualWindowResized?.Invoke();
 	}
 

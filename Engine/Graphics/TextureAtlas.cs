@@ -9,7 +9,18 @@ public sealed class TextureAtlas
 {
 	public Texture2D Texture { get; private set; }
 
-	private Dictionary<string, Rectangle> _regions;
+	private Dictionary<string, TextureRegion> _regions;
+
+	public TextureRegion this[string regionName]
+	{
+		get
+		{
+			if(!_regions.ContainsKey(regionName))
+				throw new KeyNotFoundException("regionName key not found: " + regionName);
+
+			return _regions[regionName];
+		}
+	}
 
 	public TextureAtlas(Texture2D texture)
 	{
@@ -23,29 +34,13 @@ public sealed class TextureAtlas
 		_regions = new();
 	}
 
-	public void AddRegion(string name, int x, int y, int width, int height)
+	public void CreateRegion(string name, int x, int y, int width, int height)
 	{
-		_regions.Add(name, new Rectangle(x, y, width, height));
+		_regions.Add(name, new TextureRegion(Texture, x, y, width, height));
 	}
 
-	public void AddRegion(string name, Rectangle srcRect)
+	public void CreateRegion(string name, Rectangle srcRect)
 	{
-		_regions.Add(name, srcRect);
-	}
-
-	public TextureRegion CreateRegion(string name)
-	{
-		if(!_regions.ContainsKey(name))
-			throw new KeyNotFoundException($"The region with the key name: {name} not found");
-
-		return new TextureRegion(Texture, _regions[name]);
-	}
-
-	public SpriteComponent CreateSprite(string name)
-	{
-		if(!_regions.ContainsKey(name))
-			throw new KeyNotFoundException($"The region with the key name: {name} not found");
-
-		return new SpriteComponent(Texture, _regions[name]);
+		_regions.Add(name, new TextureRegion(Texture, srcRect));
 	}
 }
