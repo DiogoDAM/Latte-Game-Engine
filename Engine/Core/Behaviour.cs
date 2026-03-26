@@ -45,7 +45,6 @@ public abstract class Behaviour : IDisposable
 		Active = false;
 		Visible = false;
 		Alive = false;
-		Debug = false;
 	}
 
 	public void Revive()
@@ -53,7 +52,6 @@ public abstract class Behaviour : IDisposable
 		Active = true;
 		Visible = true;
 		Alive = true;
-		Debug = Engine.DebugMode;
 	}
 
 	public virtual void Destroy()

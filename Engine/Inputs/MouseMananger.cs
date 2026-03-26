@@ -10,7 +10,7 @@ public sealed class MouseManager
 	private MouseState _prev;
 	private MouseState _curr;
 
-	public Vector2 CursorPosition => Vector2.Transform(_curr.Position.ToVector2(), Engine.TransformMatrix) * Engine.VirtualScaleDistortion;
+	public Vector2 CursorPosition => Vector2.Transform(_curr.Position.ToVector2(), Matrix.Invert(Engine.TransformMatrix)) * Engine.VirtualScaleDistortion;
 
 	public int ScroolWheelValue => _curr.ScrollWheelValue;
 

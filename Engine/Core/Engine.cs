@@ -19,7 +19,7 @@ public abstract class Engine : Game
 	public static int WindowWidth => Graphics.PreferredBackBufferWidth;
 	public static int WindowHeight => Graphics.PreferredBackBufferHeight;
 
-	public static Matrix TransformMatrix { get; set; }
+	public static Matrix TransformMatrix { get; set; } = Matrix.CreateTranslation(Vector3.Zero) * Matrix.CreateRotationZ(0f) * Matrix.CreateScale(Vector3.One);
 	
 	public static Color ClearColor = Color.CornflowerBlue;
 
@@ -96,15 +96,11 @@ public abstract class Engine : Game
 
 		if(ActiveScene.CanDraw)
 		{
-			ActiveScene.BeginDraw();
 				ActiveScene.Draw();
-				ActiveScene.DebugDraw();
-			ActiveScene.EndDraw();
 
+				if(ActiveScene.CanDebug) ActiveScene.DebugDraw();
 
-			ActiveScene.BeginDrawUi();
 				ActiveScene.DrawUi();
-			ActiveScene.EndDrawUi();
 		}
 
         base.Draw(gameTime);

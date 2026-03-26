@@ -26,6 +26,16 @@ public class Entity : Behaviour
 		Id = Guid.NewGuid();
 	}
 
+	public Entity(Vector2 pos)
+	{
+		_components = new();
+		_drawables = new();
+
+		Transform = AddComponent<TransformComponent>(new (pos));
+
+		Id = Guid.NewGuid();
+	}
+
 	public Entity(float x, float y)
 	{
 		_components = new();
@@ -58,6 +68,24 @@ public class Entity : Behaviour
 		}
 
 		return null;
+	}
+
+	public void AddComponent(Component c)
+	{
+		Type type = c.GetType();
+		if(!_components.ContainsKey(type))
+		{
+			_components.Add(type, c);
+
+			if(c is DrawableComponent dc)
+			{
+				_drawables.Add(type, dc);
+			}
+
+			c.Attach(this);
+			c.Awake();
+			c.Start();
+		}
 	}
 
 	public bool RemoveComponent<T>() where T : Component

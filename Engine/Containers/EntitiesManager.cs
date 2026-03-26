@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Latte;
 
-public sealed class _entitiesManager : IDisposable, IEnumerable, IEnumerable<Entity>
+public sealed class EntitiesManager : IDisposable, IEnumerable, IEnumerable<Entity>
 {
 	private List<Entity> _entities { get; set; }
 	private HashSet<Entity> _toAdd;
@@ -13,11 +13,11 @@ public sealed class _entitiesManager : IDisposable, IEnumerable, IEnumerable<Ent
 
 	public bool Disposed { get; private set; }
 
-	int Count => _entities.Count;
+	public int Count => _entities.Count;
 
 	public List<Entity> GetAllEntities() => _entities;
 
-	public _entitiesManager()
+	public EntitiesManager()
 	{
 		_entities = new();
 		_toAdd = new();
